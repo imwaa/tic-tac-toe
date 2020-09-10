@@ -104,6 +104,11 @@ body{
     footer p:nth-child(2){
         font-size: 12px;
     }
+    .btn{
+        outline: none;
+        width: 100px;
+        height: 100px;
+    }
  }
 
 
