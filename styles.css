@@ -46,7 +46,12 @@ body{
         margin: 20% 15%;
         text-align: center;
      }
- 
+     footer p:nth-child(1){
+        font-size: 15px;
+    }
+    footer p:nth-child(2){
+        font-size: 12px;
+    }
  }
 
 
