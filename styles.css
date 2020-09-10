@@ -1,0 +1,199 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+  
+
+:root{
+    --cell-size : 100px;
+    --mark-size : calc(var(--cell-size) * .9);
+}
+
+body{
+    margin: 0% 15%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.title{
+    margin: 5% 0 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 5rem;
+}
+ /*--------  footer-------  */
+ footer{
+    margin: 10% 15%;
+    text-align: center;
+ }
+ footer p {
+     margin: 0;
+ }
+ footer p:nth-child(1){
+     font-size: 20px;
+     margin-bottom: 1%;
+ }
+
+
+ @media screen and (max-width: 767px) {
+
+    .title{
+        font-size: 11vw;
+        margin: 10% 0 20%;
+    }
+    footer{
+        margin: 20% 15%;
+        text-align: center;
+     }
+ 
+ }
+
+
+/* Dessin du plateau du jeu */
+.board{
+    margin-top: 0;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+/* Dessin des cases */
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: black;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+}
+
+/* Changement du curseur en fonction du tour du joueur */
+.cell.x,
+.cell.circle{
+    cursor: not-allowed;
+}
+
+/* Couleur de Hover du X */
+/* les .not(.x) c'est pour dire d'appliquer un effet juste dans le cas ou ya pas.x*/
+.board.x .cell:not(.x):not(.circle):hover::before, 
+.board.x .cell:not(.x):not(.circle):hover::after{
+    background-color: rgb(70, 69, 69);
+}
+
+/* Couleur des dessin X*/
+.cell.x::before,
+.cell.x::after{
+    background-color: white;
+}
+
+/*  ------- Dessin du X et du O  ------- */
+/* Dessing du X */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after{
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+}
+/*PREMIER MORCEAU DU X A 45° "/"  */
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+}
+/*DEUXIEME MORCEAU DU X A -45° "\"  */
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+}
+
+/*  Dessin du O */
+
+/* Couleur de Hover du O */
+/* les .not(.o) c'est pour dire d'appliquer un effet juste dans le cas ou ya pas.o*/
+/* Couleur des dessin O */
+.cell.circle::before,
+.cell.circle::after{
+    background-color: white;
+}
+
+.board.circle .cell:not(.x):not(.circle):hover::before, 
+.board.circle .cell:not(.x):not(.circle):hover::after{
+    background-color: rgb(70, 69, 69);
+}
+
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+/*PREMIER MORCEAU DU O NOIR*/
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    width: calc(var(--mark-size) * .94);
+    height: calc(var(--mark-size) * .94);
+}
+/*Deuxieme MORCEAU DU O BLANC*/
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .65);
+    height: calc(var(--mark-size) * .65);
+    background-color: black;
+
+}
+
+/* Fin du dessin */
+
+
+/* Programmer Popup de Fin de partie*/
+/*Le message*/
+.winning-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+/* decoration du bouton */
+.winning-message button{
+    margin-top: 20px;
+    font-size:3rem;
+    background-color: white;
+    border-radius: 5px;
+    border-style: none;
+    outline: none;
+    border-color: white;
+    padding:.25em .5em;
+}
+
+.winning-message button:hover{
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+/* class pour afficher le popup */
+.winning-message.show{
+    display: flex;
+}
