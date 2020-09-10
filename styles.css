@@ -109,6 +109,7 @@ body{
         width: 100px;
         height: 100px;
     }
+
  }
 
 
@@ -233,7 +234,7 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 5rem;
+    font-size: 3rem;
     flex-direction: column;
 }
 /* decoration du bouton */
