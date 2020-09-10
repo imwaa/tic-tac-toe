@@ -17,12 +17,31 @@ const restartButton = document.getElementById("restartButton")
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn
 
-startGame()
+const startGamePopup = document.getElementById("start-game")
+const x_button = document.getElementById("x-button")
+const circle_button = document.getElementById("circle-button")
 
-restartButton.addEventListener("click", startGame)
+// Ici on va verifier si le joueur a choisi commencer avec le X ou le O
 
+x_button.addEventListener("click", ()=>{
+    circleTurn = false // X COMMENCE
+    startGame()
+})
+
+circle_button.addEventListener("click", ()=>{
+    circleTurn = true // O COMMENCE
+    startGame()
+
+})
+
+// POPUP DE FIN DE JEU, IL ANNONCE LE GAGNEUR
+restartButton.addEventListener("click", ()=>{
+    startGamePopup.classList.remove("no-show")
+    winningMessagePopup.classList.remove("show")
+
+})
 function startGame() {
-    circleTurn = false
+    startGamePopup.classList.add("no-show")
     cellElements.forEach(cell=>{
         cell.classList.remove(X_CLASS)
         cell.classList.remove(CIRCLE_CLASS)
