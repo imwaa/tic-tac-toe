@@ -20,6 +20,11 @@ let circleTurn
 const startGamePopup = document.getElementById("start-game")
 const x_button = document.getElementById("x-button")
 const circle_button = document.getElementById("circle-button")
+const x_score = document.getElementById("x-score")
+const circle_score = document.getElementById("circle-score")
+var x = 0;
+var o = 0;
+
 
 // Ici on va verifier si le joueur a choisi commencer avec le X ou le O
 
@@ -42,6 +47,8 @@ restartButton.addEventListener("click", ()=>{
 })
 function startGame() {
     startGamePopup.classList.add("no-show")
+    x_score.innerText=(x)
+    circle_score.innerText=(o)
     cellElements.forEach(cell=>{
         cell.classList.remove(X_CLASS)
         cell.classList.remove(CIRCLE_CLASS)
@@ -81,6 +88,11 @@ function endGame(draw){
         winningMessageTextElement.innerText = ("Egalité!")
     }else{
         winningMessageTextElement.innerText = `${circleTurn ? "O" : "X"} à Gagner!`
+        if(circleTurn){
+            o++
+        }else{
+            x++
+        }
     }
     winningMessagePopup.classList.add("show")
 }

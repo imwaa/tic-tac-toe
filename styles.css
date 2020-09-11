@@ -131,12 +131,21 @@ margin-bottom: 5%;
     background-color: white;
     color: black;
 }
+
+.score-container span{
+    margin-left: 2%;
+    background-color: white;
+    width: 50%;
+    color: black;
+    border-radius: 2px;
+}
+
 .score-title-container{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 .score-title{
     display: flex;
@@ -147,6 +156,7 @@ margin-bottom: 5%;
     height: 60px;
     font-size: 2rem;
 }
+
 
 
 
